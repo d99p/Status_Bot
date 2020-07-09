@@ -23,10 +23,10 @@ namespace Status_Bot
         {
             string message;
             Ping ping = new Ping();
-            PingReply pingresult = ping.Send("91.202.144.109");
+            PingReply pingresult = ping.Send("91.202.144.108");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = { pingresult.RoundtripTime.ToString()} ms");
+                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms");
             }
             else
             {
@@ -41,7 +41,7 @@ namespace Status_Bot
             PingReply pingresult = ping.Send("93.190.44.166");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = { pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
             }
             else
             {
@@ -53,10 +53,10 @@ namespace Status_Bot
         {
             string message;
             Ping ping = new Ping();
-            PingReply pingresult = ping.Send("10.11.29.6");
+            PingReply pingresult = ping.Send("91.202.144.107");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = { pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
             }
             else
             {

@@ -14,12 +14,12 @@ namespace Status_Bot
         
         public static void Main(string[] args)
         {
-            
 
-            Console.WriteLine("***** Bot Start Work *****\n");
-            Console.WriteLine ($"Bot start working at {DateTime.Now.ToString()}");
-            Console.WriteLine("Press any key to stop bot. \n");
-            
+            Console.WriteLine("    --------------------------------------------");
+            Console.WriteLine("   /   ********** Bot Start Work **********    /");
+            Console.WriteLine($"  / Bot start working at: {DateTime.Now.ToString()} /");
+            Console.WriteLine(" / Press any key to stop bot.                /");
+            Console.WriteLine(" --------------------------------------------");
 
 
             Bot.OnMessage += Bot_OnMessage;
@@ -58,7 +58,7 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
 
     Hosing:  {PingOut.output1}
 
-    Комп: {PingOut.output2} ");
+    Moodle: {PingOut.output2} ");
                 }
 
             }
