@@ -52,7 +52,7 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
                     Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Вітаю вас! {e.Message.Chat.FirstName}");
 
                     Status_Ping PingOut = new Status_Ping();
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус наших серверів на даний час {DateTime.Now.ToLongTimeString()}
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус наших серверів на даний час: |{DateTime.Now.ToLongTimeString()}|
 
     lib.udau.edu.ua: {PingOut.output}
 
