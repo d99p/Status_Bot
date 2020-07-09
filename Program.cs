@@ -18,19 +18,19 @@ namespace Status_Bot
             Console.WriteLine("    --------------------------------------------");
             Console.WriteLine("   /   ********** Bot Start Work **********    /");
             Console.WriteLine($"  / Bot start working at: {DateTime.Now.ToString()} /");
-            Console.WriteLine(" / Press any key to stop bot.                /");
+            Console.WriteLine(" / Press \"X\" key to stop bot.                /");
             Console.WriteLine(" --------------------------------------------");
-
 
             Bot.OnMessage += Bot_OnMessage;
             Bot.OnMessageEdited += Bot_OnMessage;
-            
 
-           
-           
+            // Bot on or off
             Bot.StartReceiving();
-            Console.ReadLine();
-            Bot.StopReceiving();
+            while (Console.ReadKey(true).Key != ConsoleKey.X) 
+            {
+                Bot.StopReceiving();
+            }
+            
 
         }
         
@@ -49,16 +49,16 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
             {
                 if (e.Message.Text == "/Status")
                 {
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Вітаю вас!{e.Message.Chat.FirstName}");
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Вітаю вас! {e.Message.Chat.FirstName}");
 
                     Status_Ping PingOut = new Status_Ping();
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус наших серверів:
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус наших серверів на даний час {DateTime.Now.ToLongTimeString()}
 
-    Репозитарій: {PingOut.output}
+    lib.udau.edu.ua: {PingOut.output}
 
-    Hosing:  {PingOut.output1}
+    moodle.udau.edu.ua: {PingOut.output1}
 
-    Moodle: {PingOut.output2} ");
+    www.udau.edu.ua: {PingOut.output2} ");
                 }
 
             }

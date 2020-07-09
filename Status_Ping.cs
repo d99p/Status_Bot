@@ -14,53 +14,53 @@ namespace Status_Bot
 
         public Status_Ping()
         {
-            output = Ping();
-            output1 = Ping1();
-            output2 = Ping2();
+            output = Lib();
+            output1 = Moodle();
+            output2 = Udau();
         }
 
-        private static string Ping()
+        private static string Lib()
         {
             string message;
             Ping ping = new Ping();
-            PingReply pingresult = ping.Send("91.202.144.108");
+            PingReply pingresult = ping.Send("lib.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms");
+                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms");
             }
             else
             {
-                message = ("Не працює! ");
+                message = ("Не працює!");
             }
             return message;
         }
-        private static string Ping1()
+        private static string Moodle()
         {
             string message;
             Ping ping = new Ping();
-            PingReply pingresult = ping.Send("93.190.44.166");
+            PingReply pingresult = ping.Send("moodle.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
             }
             else
             {
-                message = ("Не працює! ");
+                message = ("Не працює!");
             }
             return message;
         }
-        private static string Ping2()
+        private static string Udau()
         {
             string message;
             Ping ping = new Ping();
-            PingReply pingresult = ping.Send("91.202.144.107");
+            PingReply pingresult = ping.Send("www.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
             }
             else
             {
-                message = ("Не працює! ");
+                message = ("Не працює!");
             }
             return message;
         }
