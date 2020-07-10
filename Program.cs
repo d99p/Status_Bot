@@ -15,11 +15,11 @@ namespace Status_Bot
         public static void Main(string[] args)
         {
 
-            Console.WriteLine("    --------------------------------------------");
-            Console.WriteLine("   /   ********** Bot Start Work **********    /");
-            Console.WriteLine($"  / Bot start working at: {DateTime.Now.ToString()} /");
-            Console.WriteLine(" / Press \"X\" key to stop bot.                /");
-            Console.WriteLine(" --------------------------------------------");
+            Console.WriteLine($@"    --------------------------------------------  
+   /   ********** Bot Start Work **********    /
+  / Bot start working at: {DateTime.Now.ToString()} /
+ / Press  ""X""  key to stop bot.              /
+ --------------------------------------------");
 
             Bot.OnMessage += Bot_OnMessage;
             Bot.OnMessageEdited += Bot_OnMessage;
@@ -47,7 +47,7 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
             // Output messages
             if (e.Message.Type == Telegram.Bot.Types.Enums.MessageType.Text)
             {
-                if (e.Message.Text == "/Status")
+                if (e.Message.Text == "/status")
                 {
                     Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Вітаю вас! {e.Message.Chat.FirstName}");
 
@@ -60,6 +60,11 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
 
     www.udau.edu.ua: {PingOut.output2} ");
                 }
+                if (e.Message.Text == "/about")
+                {
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Тестовий бот, розроблений Денисом Перепелицею для моніторингу стану серверів ");
+                }
+
 
             }
             
