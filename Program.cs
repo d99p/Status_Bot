@@ -10,7 +10,7 @@ namespace Status_Bot
 { 
     class Program
     {
-        private static readonly TelegramBotClient Bot = new TelegramBotClient("1321277709:AAFyxXEJJJLtQpMorl7WBW7PnItxoIefGXc");
+        private static readonly TelegramBotClient Bot = new TelegramBotClient("1115799018:AAHRZhaBEI1YMoVvKgDgn843Z5iSq7PZs04");
         
         public static void Main(string[] args)
         {
@@ -47,12 +47,18 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
             // Output messages
             if (e.Message.Type == Telegram.Bot.Types.Enums.MessageType.Text)
             {
+                if(e.Message.Text == "/start")
+                {
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Вітаю вас! {e.Message.Chat.FirstName}
+        Доступні команди на даний час:
+                        /status - перевірка статусу серверів
+                        /about  - інформація про бота ");
+                }
+               
                 if (e.Message.Text == "/status")
                 {
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Вітаю вас! {e.Message.Chat.FirstName}");
-
                     Status_Ping PingOut = new Status_Ping();
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус наших серверів на даний час: |{DateTime.Now.ToLongTimeString()}|
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус  серверів на даний час: |{DateTime.Now.ToLongTimeString()}|
 
     lib.udau.edu.ua: {PingOut.output}
 
