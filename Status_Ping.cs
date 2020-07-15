@@ -8,15 +8,15 @@ namespace Status_Bot
 {
     class Status_Ping
     {
-        public string output { get; set; }
-        public string output1 { get; set; }
-        public string output2 { get; set; }
+        public string lib { get; set; }
+        public string moodle { get; set; }
+        public string udau { get; set; }
 
         public Status_Ping()
         {
-            output = Lib();
-            output1 = Moodle();
-            output2 = Udau();
+            lib = Lib();
+            moodle = Moodle();
+            udau = Udau();
         }
 
         private static string Lib()
@@ -26,7 +26,8 @@ namespace Status_Bot
             PingReply pingresult = ping.Send("lib.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms");
+                message = ($@"Працює, Ip адреса ({pingresult.Address}) 
+        Затримка відповіді = {pingresult.RoundtripTime} ms");
             }
             else
             {
@@ -41,7 +42,8 @@ namespace Status_Bot
             PingReply pingresult = ping.Send("moodle.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює, Ip адреса ({pingresult.Address}) 
+        Затримка відповіді = {pingresult.RoundtripTime} ms ");
             }
             else
             {
@@ -56,7 +58,8 @@ namespace Status_Bot
             PingReply pingresult = ping.Send("www.udau.edu.ua");
             if (pingresult.Status.ToString() == "Success")
             {
-                message = ($@"Працює, Ip адреса ({pingresult.Address.ToString()}) Затримка відповіді = {pingresult.RoundtripTime.ToString()} ms ");
+                message = ($@"Працює, Ip адреса ({pingresult.Address}) 
+        Затримка відповіді = {pingresult.RoundtripTime} ms ");
             }
             else
             {

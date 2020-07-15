@@ -12,12 +12,12 @@ namespace Status_Bot
     {
         private static readonly TelegramBotClient Bot = new TelegramBotClient("1326857517:AAGiNeuEjMN7zPuuZ_cySv5xgH7P4VAERk4");
         
-        public static void Main(string[] args)
+        public static void Main()
         {
 
             Console.WriteLine($@"    --------------------------------------------  
    /   ********** Bot Start Work **********    /
-  / Bot start working at: {DateTime.Now.ToString()} /
+  / Bot start working at: {DateTime.Now} /
  / Press  ""X""  key to stop bot.              /
  --------------------------------------------");
 
@@ -34,16 +34,14 @@ namespace Status_Bot
 
         }
         
-
-
         private static void Bot_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
             //Input messages
             if (e.Message.Type == Telegram.Bot.Types.Enums.MessageType.Text)
             {
-                Console.WriteLine($@"Input messages: {e.Message.Text} 
+                Console.WriteLine($@"Input message: {e.Message.Text} 
 
-From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
+    From: {e.Message.From.FirstName} Time message: {e.Message.Date}");
             }
 
             // Output messages
@@ -51,25 +49,38 @@ From: {e.Message.Chat.FirstName} Time messages: {DateTime.Now.ToString()}");
             {
                 if (e.Message.Text.StartsWith("/start"))
                 {
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Вітаю вас! {e.Message.Chat.FirstName}
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"
+        Вітаю! {e.Message.From.FirstName}
         Доступні команди на даний час:
                         /status - перевірка статусу серверів
-                        /about  - інформація про бота ");
+                        /ping   - пінг веденої ip адреси, приклад ""ping google.com""
+                        /about  - інформація про бота");
                 }
                 else if (e.Message.Text.StartsWith("/status"))
                 {
                     Status_Ping PingOut = new Status_Ping();
                     Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Статус  серверів на даний час: |{DateTime.Now.ToLongTimeString()}|
 
-    lib.udau.edu.ua: {PingOut.output}
+    lib.udau.edu.ua: {PingOut.lib}
 
-    moodle.udau.edu.ua: {PingOut.output1}
+    moodle.udau.edu.ua: {PingOut.moodle}
 
-    www.udau.edu.ua: {PingOut.output2} ");
+    www.udau.edu.ua: {PingOut.udau}");
+                }
+                else if(e.Message.Text.StartsWith("/ping"))
+                {
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $@"Перевірка {e.Message.Text.Substring(5)}");
+                  
+                    string textWithoutCommand = e.Message.Text.Substring(6);
+                    PingAddress address = new PingAddress(textWithoutCommand);
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"{address.get_ping}");
+                  
                 }
                 else if (e.Message.Text.StartsWith("/about"))
                 {
-                    Bot.SendTextMessageAsync(e.Message.Chat.Id, $"Тестовий бот, розроблений Денисом Перепелицею для моніторингу стану серверів ");
+                    Bot.SendTextMessageAsync(e.Message.Chat.Id, @"Bot status is designed to monitor servers and more. 
+    Creator: Denis Perepelytsia 
+    linkedin: https://www.linkedin.com/in/denys-perepelytsia/ ");
                 }
 
 
