@@ -10,7 +10,7 @@ namespace Status_Bot
 { 
     class Program
     {
-        private static readonly TelegramBotClient Bot = new TelegramBotClient("1326857517:AAGiNeuEjMN7zPuuZ_cySv5xgH7P4VAERk4");
+        private static readonly TelegramBotClient Bot = new TelegramBotClient("Token");
         
         public static void Main()
         {
